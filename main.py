@@ -10,7 +10,7 @@ from glob import glob
 import matplotlib.pyplot as plt
 
 # re-size all the images to this
-IMAGE_SIZE = [224, 224]
+IMAGE_SIZE = [270, 270]
 
 train_path = 'Datasets/Train'
 valid_path = 'Datasets/Test'
@@ -53,13 +53,13 @@ train_datagen = ImageDataGenerator(rescale=1. / 255,
 test_datagen = ImageDataGenerator(rescale=1. / 255)
 
 training_set = train_datagen.flow_from_directory('Datasets/Train',
-                                                 target_size=(224, 224),
-                                                 batch_size=32,
+                                                 target_size=(270, 270),
+                                                 batch_size=10,
                                                  class_mode='categorical')
 
 test_set = test_datagen.flow_from_directory('Datasets/Test',
-                                            target_size=(224, 224),
-                                            batch_size=32,
+                                            target_size=(270, 270),
+                                            batch_size=10,
                                             class_mode='categorical')
 
 '''r=model.fit_generator(training_set,
@@ -76,22 +76,22 @@ r = model.fit_generator(
     steps_per_epoch=len(training_set),
     validation_steps=len(test_set)
 )
-# loss
-plt.plot(r.history['loss'], label='train loss')
-plt.plot(r.history['val_loss'], label='val loss')
-plt.legend()
-plt.show()
-plt.savefig('LossVal_loss')
-
-# accuracies
-plt.plot(r.history['acc'], label='train acc')
-plt.plot(r.history['val_acc'], label='val acc')
-plt.legend()
-plt.show()
-plt.savefig('AccVal_acc')
+# # loss
+# plt.plot(r.history['loss'], label='train loss')
+# plt.plot(r.history['val_loss'], label='val loss')
+# plt.legend()
+# plt.show()
+# plt.savefig('LossVal_loss')
+#
+# # accuracies
+# plt.plot(r.history['acc'], label='train acc')
+# plt.plot(r.history['val_acc'], label='val acc')
+# plt.legend()
+# plt.show()
+# plt.savefig('AccVal_acc')
 
 import tensorflow as tf
 
 from keras.models import load_model
 
-model.save('facefeatures_new_model.h5')
+model.save('facefeatures_new_model_new.h5')
