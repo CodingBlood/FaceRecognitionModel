@@ -8,6 +8,8 @@ import cv2
 # import FaceDetectionAndCroppingTest
 from PIL import Image
 from numpy import asarray
+
+
 def CapNCrop():
     # a = cv2.imread('./Datasets/Train/Kartik/1.jpg')
     # print(a.shape)
@@ -30,9 +32,9 @@ def CapNCrop():
         faces = face_cascade.detectMultiScale(gray, 1.1, 4)
         # Draw the rectangle around each face
         for (x, y, w, h) in faces:
-            cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-            roi = img[y:y+h, x:x+w]
-            roi = cv2.resize(roi, (270,270))
+            cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+            roi = img[y:y + h, x:x + w]
+            roi = cv2.resize(roi, (270, 270))
             print(roi.shape)
             data = roi.reshape(-1, 270, 270, 3)
             # print(data.shape)
@@ -46,7 +48,7 @@ def CapNCrop():
                 k += 1
             else:
                 cv2.putText(img, 'MOHAN', (x, y + h), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-                m+=1
+                m += 1
             i += 1
             print(i)
             if i == 30:
@@ -64,29 +66,22 @@ def CapNCrop():
     # Release the VideoCapture object
     cap.release()
     cv2.destroyAllWindows()
-    if k>m:
-        # imge = cv2.VideoCapture(0)
-        # img = cv2.cvtColor(imge.read(), cv2.COLOR_BGR2GRAY)
-        cv2.putText(img, 'Hey Kartik', (0, 0), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2)
-        cv2.imshow('imges', img)
+
+    if k > m:
+        print("Hey Kartik")
+        image = 127 * np.ones((270, 270, 3), dtype="uint8")
+        cv2.putText(image, 'Hey Kartik', (0, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        cv2.imshow('images', image)
         cv2.waitKey()
     else:
-        # imge = cv2.VideoCapture(0)
-        # img = cv2.cvtColor(imge, cv2.COLOR_BGR2GRAY)
-        cv2.putText(img, 'Hey Mohan', (0, 0), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2)
-        cv2.imshow('imges', img)
+        print("Hey Mohan")
+        image = 127 * np.ones((100, 200, 3), dtype="uint8")
+        cv2.putText(image, 'Hey Mohan', (0, 0), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        cv2.imshow('imgaes', image)
         cv2.waitKey()
 
+
 CapNCrop()
-
-
-
-
-
-
-
-
-
 
 #
 # # load the image

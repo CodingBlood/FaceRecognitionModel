@@ -46,3 +46,6 @@ def main():
         print("UserName Exists")
         main()
 main()
+
+import main
+main
